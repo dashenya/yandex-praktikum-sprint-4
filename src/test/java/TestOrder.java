@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import qascooter.pages.HomePage;
+import qascooter.pages.OrderFormPage;
+
 import java.time.Duration;
 
 /*
@@ -64,6 +67,7 @@ public class TestOrder {
 
     @Test
     public void checkOrderCreating() {
+
         // На случай настроек с опциями:
         //ChromeOptions options = new ChromeOptions();
         //options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
@@ -102,9 +106,7 @@ public class TestOrder {
 
 
         // ожидание загрузки второй части формы
-        new WebDriverWait(driver, Duration.ofSeconds(30))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[text()='Про аренду']")));
-
+        objOrderFormPage.waitOrderFormPart2Loaded();
         // клик по полю выбора даты
         objOrderFormPage.clickInputData();
         // выбрать дату
